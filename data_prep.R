@@ -15,3 +15,7 @@ orions <- data %>%
 
 isiss <- data %>%
   filter(preusuel=="ISIS")
+
+barplot(orions$nombre,names.arg = orions$annais,las=2)
+
+barplot(isiss$nombre,names.arg = isiss$annais,border = NA, main = "Occurence du prénom ISIS depuis 1968", xlab = "Années", ylab = "Nombre", las=2, cex.names=0.8)
