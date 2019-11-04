@@ -1,7 +1,7 @@
 library(readr)
 library(tidyr)
 library(dplyr)
-data <- read_delim("App01/nat2018.csv",
+nat2018 <- read_delim("App01/nat2018.csv",
                    ";",
                    escape_double = FALSE,
                    col_types = cols(
@@ -11,10 +11,12 @@ data <- read_delim("App01/nat2018.csv",
                      nombre = col_integer()),
                    trim_ws = TRUE)
 
-orions <- data %>%
+saveRDS(nat2018,file="prenoms.Rda")
+
+orions <- nat2018 %>%
   filter(preusuel=="ORION")
 
-isiss <- data %>%
+isiss <- nat2018 %>%
   filter(preusuel=="ISIS")
 
 barplot(orions$nombre,names.arg = orions$annais,las=2)

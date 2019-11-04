@@ -1,6 +1,8 @@
 #Exemple issu de https://rstudio.github.io/DT/shiny.html
 library(shiny)
 library(DT)
+#rm(data)
+data <- readRDS(file="../prenoms.Rda")
 
 ui = fluidPage(
   fluidRow(
