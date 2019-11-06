@@ -1,7 +1,7 @@
 library(readr)
 library(tidyr)
 library(dplyr)
-nat2018 <- read_delim("App01/nat2018.csv",
+nat2018 <- read_delim("App/nat2018.csv",
                    ";",
                    escape_double = FALSE,
                    col_types = cols(
