@@ -4,7 +4,7 @@ library(dplyr)
 library(ggplot2)
 
 #choix du prénom. A changer ici pour les tests subséquents.
-prenomchoisi <- toupper('vanessa')
+prenomchoisi <- toupper('edith')
 
 #limitation de la liste aux stats du prénom choisi à partir de nat2018l et nat2018w
 choix2018l <- nat2018l %>%
@@ -12,8 +12,13 @@ choix2018l <- nat2018l %>%
 choix2018w <- nat2018w %>%
   filter(preusuel==prenomchoisi)
 
+choix2018l2 <- choix2018w %>%
+  pivot_longer(cols = c(homme,femme), names_to = "sexe", values_to = "nombre") %>%
+  select(sexe,preusuel,annais,nombre)
+choix2018l2$sexe <- ifelse(choix2018l2$sexe == "homme", "1", "2")
+
 #test de pseudo pyramide des âges, adapté de https://stackoverflow.com/a/36804394
-ggplot(data = choix2018l,
+ggplot(data = choix2018l2,
        mapping = aes(x = annais,
                      y = ifelse(test = sexe == "1", yes = -nombre, no = nombre),
                      fill = sexe)) +
