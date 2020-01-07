@@ -4,7 +4,7 @@ library(dplyr)
 library(ggplot2)
 
 #choix du prénom. A changer ici pour les tests subséquents.
-prenomchoisi <- toupper('edith')
+prenomchoisi <- toupper('Claude')
 
 #limitation de la liste aux stats du prénom choisi à partir de nat2018l et nat2018w
 choix2018l <- nat2018l %>%

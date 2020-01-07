@@ -27,6 +27,12 @@ server = function(input, output) {
     req(input$prenom)
     filter(data,preusuel==toupper(input$prenom))
     })
+  choixw <- reactive(choix() %>%
+    pivot_wider(id_cols = c(preusuel,annais),
+                names_from = sexe,
+                names_prefix = "sex_",
+                values_from = nombre) %>%
+      rename("Année" = annais,Hommes=sex_1,Femmes=sex_2))
   prenom_choisi <- eventReactive(input$go,{
     req(input$prenom)
     input$prenom})
@@ -46,7 +52,13 @@ server = function(input, output) {
                      subtitle="Source : Insee d'après les déclarations à l'état civil français")
     )
     )
-  output$tbl1 <- renderDT(choix(), options = list(lengthChange = FALSE)  )
+
+  output$tbl1 <- renderDT({ 
+    dat <- datatable(choixw(), options = list(paging=FALSE)) %>%
+      formatStyle('Hommes',  color = "#109CEF") %>%
+      formatStyle('Femmes',  color = "#EF109C")
+    return(dat)
+  })
 }
 
 shinyApp(ui,server)
