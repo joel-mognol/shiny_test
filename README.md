@@ -1,5 +1,3 @@
 # shiny_test
-Test des fonctionnalités de Shinyapps
-Nettoyage des données
-App réactive simple
-Nouvelle ligne pour tester les problème de ressources système consommées par l'IDE de R
+Cette application Shiny est le résultat d'un exercice de mise en pratique de cours sur R et Shiny.
+Elle est basée sur les données de l'Insee sur les prénoms déclarés à l'état civil entre 1900 et 2018.
