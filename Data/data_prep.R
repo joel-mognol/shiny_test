@@ -8,7 +8,7 @@ library(dplyr)
 #- avec les valeurs des deux sexes sur la même ligne.
 #Le pivot_wider permet de générer les zéros nécessaires au graph1 de App/App.R
 
-nat2018w <- read_delim("Data/nat2018.csv",
+nat2018w <- read_delim("../Data/nat2018.csv",
                    ";",
                    escape_double = FALSE,
                    col_types = cols(
@@ -24,4 +24,4 @@ nat2018w <- read_delim("Data/nat2018.csv",
               values_from = nombre,
               values_fill = list(nombre=0))
 
-saveRDS(nat2018w,file="App/prenoms_w.Rda")
+saveRDS(nat2018w,file="prenoms_w.Rdata")

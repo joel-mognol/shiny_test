@@ -1,8 +1,9 @@
 library(shiny)
 library(DT)
 library(ggplot2)
-
-data <- readRDS(file="prenoms_w.Rda")
+library(readr)
+library(tidyr)
+library(dplyr)
 
 ui = fluidPage(
   titlePanel("Occurence des prénoms donnés à l'Etat civil français depuis 1900",
@@ -21,6 +22,7 @@ ui = fluidPage(
 
 
 server = function(input, output) {
+  data <- readRDS("prenoms_w.Rdata")
   #choixw avec w pour wider correspond aux stats du seul prénom choisi,
   #avec les valeurs des deux sexes sur la même ligne.
   choixw <- eventReactive(input$go, {
